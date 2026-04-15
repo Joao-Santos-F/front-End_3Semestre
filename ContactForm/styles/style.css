@@ -12,7 +12,7 @@
 body {
     background-image: linear-gradient(to right bottom, #18a2c9, #72c3bd);
     background-repeat: no-repeat;
-    min-width: 100vh;
+    width: 100%;
     min-height: 100vh;
 }
 
@@ -112,6 +112,7 @@ body {
 .contact-form__input--tamanho3 {
     width: 100%;
     height: 150px;
+    resize: none;
 }
 
 .contact-form__input--tres-metades {
