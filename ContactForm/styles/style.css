@@ -12,7 +12,7 @@
 body {
     background-image: linear-gradient(to right bottom, #18a2c9, #72c3bd);
     background-repeat: no-repeat;
-    width: 100vw;
+    min-width: 100vh;
     min-height: 100vh;
 }
 
