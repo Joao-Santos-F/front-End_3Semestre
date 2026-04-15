@@ -120,6 +120,11 @@ body {
     resize: none;
 }
 
+.contact-form__input--tres-metades3{
+    width: 35%;
+    height: 35px;
+}
+
 .contact-form__input--tres-metades {
     width: 30%;
     height: 35px;
@@ -140,6 +145,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 40px;
+    margin-top: 20px;
 }
 
 .contact-button__cadastro{
@@ -151,7 +157,7 @@ body {
     border-radius: 3px;
 }
 
-.contact-button__entrar{
+.contact-button__limpar{
     width: 400px;
     height: 45px;
     color: white;
