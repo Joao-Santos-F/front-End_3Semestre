@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Desktop First*/
+
+h1{
+    color: purple;
+}
+
+img{
+    width: 200px;
+}
+
+/*Breakpoints*/
+
+
+
+/*Tablet < 992px (768px - 991px)*/
+
+@media screen and (max-width: 991px){
+    h1{
+        color: brown;
+    }
+
+    img{
+        display: none;
+    };
+}
+
+/*Mobile < 768px (0px - 767px)*/
+
+@media screen and (max-width: 767px){
+    h1{
+        background-color: pink;
+        color: white;
+    }
+
+    img{
+        display: flex;
+    }
+}
