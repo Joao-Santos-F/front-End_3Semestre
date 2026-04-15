@@ -175,6 +175,14 @@ body {
         font-size: 80%;
     }
 
+    .contact-button__cadastro{
+        width: 40%;
+    }
+
+    .contact-button__limpar{
+        width: 40%;
+    }
+
 }
 
 /*Mobile BreakPoint*/
