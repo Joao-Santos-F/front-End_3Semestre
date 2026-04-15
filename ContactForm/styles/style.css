@@ -204,4 +204,20 @@ body {
         justify-content: center;
         align-items: center;
     }
+
+    .contact-button{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1px;
+    }
+
+    .contact-button__cadastro{
+        width: 90%;
+    }
+
+    .contact-button__limpar{
+        width: 90%;
+    }
 }
