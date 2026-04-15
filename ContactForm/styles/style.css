@@ -165,7 +165,35 @@ body {
 }
 
 /*Tablet BreakPoint*/
-@media screen and (max-width: 991px) {}
+@media screen and (max-width: 991px) {
+    .container{
+        max-width: 740px;
+    }
+
+    .contact-form__label{
+        font-size: 80%;
+    }
+
+}
 
 /*Mobile BreakPoint*/
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+
+    .contact-form__label{
+        display: none;
+    }
+
+    .contact-form__input{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .contact-form__col-b{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
