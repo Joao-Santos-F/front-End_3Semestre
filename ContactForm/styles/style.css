@@ -143,9 +143,8 @@ body {
 .contact-button{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     gap: 40px;
-    margin-top: 20px;
 }
 
 .contact-button__cadastro{
