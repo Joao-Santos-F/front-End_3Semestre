@@ -61,7 +61,6 @@ body {
     display: flex;
     align-items: center;
     margin-top: 10px;
-    
 }
 
 .contact-form__col-b {
@@ -97,6 +96,12 @@ body {
     border: 1px solid white;
     color: white;
     background-color: #72c3bd;
+}
+
+.contact-form__col-a--endereco{
+    width: 10%;
+    display: flex;
+    margin-top: 22px;
 }
 
 .contact-form__input--metade {
