@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="contact-form__col-c">
-                        <input class="contact-form__input contact-form__input--tres-metades2" name="endereco" id="cep" placeholder="CEP: 00000-000" type="text">
+                        <input class="contact-form__input contact-form__input--tres-metades2" name="endereco" id="cep" placeholder="CEP: 00000-000" type="text" onblur="buscarEndereco(this.value)">
                         <input class="contact-form__input contact-form__input--metade2" name="endereco" id="endereco" placeholder="Rua Lá de Casa" type="text">
                         <input class="contact-form__input contact-form__input--tres-metades2" name="endereco" id="numero" placeholder="Ex: 555" type="text">
 
@@ -94,7 +94,7 @@
                 </div>      
 
                 <article class="contact-button">
-                    <button class="contact-button__cadastro contact-form__input" type="button" id="cadastrar" name="cadastrar" onclick="VerificarCampos();">Cadastrar</button>
+                    <button class="contact-button__cadastro contact-form__input" type="button" id="cadastrar" name="cadastrar" onclick="validarFormulario();">Cadastrar</button>
                     <button class="contact-button__limpar contact-form__input" type="reset" id="limpar" name="limpar" onclick="">Limpar</button>
                 </article>
 
@@ -104,127 +104,7 @@
 
     </main>
     
-    <script>
-        function VerificarCampos() {
-            let nome = document.getElementById("nome").value.trim();
-            let sobrenome = document.getElementById("sobrenome").value.trim();
-            let email = document.getElementById("email").value.trim();
-            let numinter = document.getElementById("numinter").value.trim();
-            let telefone = document.getElementById("telefone").value.trim();
-            let ddd = document.getElementById("ddd").value.trim();
-            let cep = document.getElementById("cep").value.trim();
-            let endereco = document.getElementById("endereco").value.trim();
-            let numero = document.getElementById("numero").value.trim();
-            let complemento = document.getElementById("complemento").value.trim();
-            let bairro = document.getElementById("bairro").value.trim();
-            let cidade = document.getElementById("cidade").value.trim();
-            let estado = document.getElementById("estado").value.trim();
-            let anotacoes = document.getElementById("anotacoes").value.trim();
-
-            if (nome.length == 0) {
-                FormError("nome");
-            } else {
-                FormSuccess("nome");
-            }
-
-            if (sobrenome.length == 0) {
-                FormError("sobrenome");
-            } else {
-                FormSuccess("sobrenome");
-            }
-
-            if (email.length == 0) {
-                FormError("email");
-            } else {
-                FormSuccess("email");
-            }
-
-            if (numinter.length == 0) {
-                FormError("numinter");
-            } else {
-                FormSuccess("numinter");
-            }
-
-            if (ddd.length == 0) {
-                FormError("ddd");
-            } else {
-                FormSuccess("ddd");
-            }
-
-             if (telefone.length == 0) {
-                FormError("telefone");
-            } else {
-                FormSuccess("telefone");
-            }
-
-             if (cep.length == 0) {
-                FormError("cep");
-            } else {
-                FormSuccess("cep");
-            }
-
-             if (endereco.length == 0) {
-                FormError("endereco");
-            } else {
-                FormSuccess("endereco");
-            }
-
-             if (numero.length == 0) {
-                FormError("numero");
-            } else {
-                FormSuccess("numero");
-            }
-
-             if (complemento.length == 0) {
-                FormError("complemento");
-            } else {
-                FormSuccess("complemento");
-            }
-
-             if (bairro.length == 0) {
-                FormError("bairro");
-            } else {
-                FormSuccess("bairro");
-            }
-
-             if (cidade.length == 0) {
-                FormError("cidade");
-            } else {
-                FormSuccess("cidade");
-            }
-
-             if (estado.length == 0) {
-                FormError("estado");
-            } else {
-                FormSuccess("estado");
-            }
-
-            //funcao que pinta a borda que falta preencher
-            function FormError(fildId){
-                document.getElementById(fildId).style.border = "1px solid red";
-            }
-
-            //funcao que reinicia a borda do campo preenchido
-            function FormSuccess(fildId){
-                document.getElementById(fildId).style.border = "none";
-            }
-
-            console.log(`
-            nome: ${nome} ${sobrenome} | 
-            email: ${email} | 
-            telefone: +${numinter} ${ddd} ${telefone} | 
-            CEP: ${cep} |
-            Endereço: ${endereco} |
-            Número: ${numero} |
-            Complemento: ${complemento} |
-            Bairro: ${bairro} |
-            Cidade: ${cidade} |
-            Estado: ${estado} |
-            Anotações: ${anotacoes} |
-            `);
-        }
-    </script>
-    
+    <script src="../js/script.js"></script>
 </body>
 
 </html>

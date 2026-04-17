@@ -1,0 +1,99 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "contatos": [
+    {
+      "id": "FMKsvRwpGq4",
+      "nome": "Aunberto",
+      "sobrenome": "Ego",
+      "email": "Aunberto.EgoMaisAura.6769@gmail.com"
+    },
+    {
+      "id": "nN9acbh5KKU",
+      "nome": "jaozin",
+      "sobrenome": "SPFC",
+      "email": "jaozin.tricolor@gmail.com"
+    },
+    {
+      "id": "nN9acbh5KKU",
+      "nome": "jaozin",
+      "sobrenome": "SPFC",
+      "email": ""
+    },
+    {
+      "id": "nN9acbh5KKU",
+      "nome": "jaozin",
+      "sobrenome": "SPFC",
+      "email": ""
+    },
+    {
+      "id": "nN9acbh5KKU",
+      "nome": "jaozin",
+      "sobrenome": "SPFC",
+      "email": ""
+    },
+    {
+      "nome": "JOAO",
+      "sobrenome": "SANTOS",
+      "id": "wLEZKqyjQlE"
+    }
+  ],
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Produto 1",
+      "preco": 10.99,
+      "quantidade": 100
+    },
+    {
+      "id": "2",
+      "nome": "Produto 2",
+      "preco": 19.99,
+      "quantidade": 50
+    },
+    {
+      "id": "3",
+      "nome": "Produto 3",
+      "preco": 5.49,
+      "quantidade": 200
+    },
+    {
+      "id": "4",
+      "nome": "Produto 4",
+      "preco": 15,
+      "quantidade": 75
+    },
+    {
+      "id": "5",
+      "nome": "Produto 5",
+      "preco": 8.75,
+      "quantidade": 150
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
