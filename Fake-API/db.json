@@ -1,0 +1,10 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Jao",
+      "idade": 81
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

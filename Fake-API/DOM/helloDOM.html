@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <link rel="stylesheet" href="helloDOM.css">
+</head>
+<body>
+    <h1 id="titulo">Bem-Vindo</h1>
+    <p>Hello DOM JS</p>
+    <button onclick="saudacao()">Click em mim</button>
+    <button ondblclick="ansiosoFudido()">Click em mim 2X</button>
+    <button onmousedown="tirouOCu()">Click em mim</button>
+    <button onmouseover="passaOCu()" onclick="saudacaoIlegal()">Não click em mim</button>
+</body>
+
+    <script>
+        
+        alert(`Título: ${document.getElementById("titulo").textContent}`)
+
+        function saudacao() {
+            alert("Você me clicou de forma bem sedutora, roubei teu cu e sumi <3")
+        }
+
+        function tirouOCu() {
+            alert("Já comi esse bumbum guloso, some daqui filha da puta safado")
+        }
+
+        function saudacaoIlegal() {
+            alert("Me deixa quieto fdp, não é porque sou um botão que tu deve clicar em mim")
+        }
+
+        function passaOCu() {
+            alert("Tomar no teu cu, falei pra não clicar em mim")
+        }
+
+        function ansiosoFudido() {
+            alert("Para de ser ansioso pra ter essa bunda comida, fudido")
+        }
+
+    </script>
+</html>
