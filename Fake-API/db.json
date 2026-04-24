@@ -6,5 +6,39 @@
       "idade": 81
     }
   ],
+  "imc": [
+    {
+      "nome": "Eduardo",
+      "altura": 1.67,
+      "peso": 85,
+      "imc": 30.477966223242138,
+      "situacao": "Obesidade Grau I",
+      "id": "Xdrs7n35I_k"
+    },
+    {
+      "nome": "Marcos",
+      "altura": 1.72,
+      "peso": 78,
+      "imc": 26.365603028664147,
+      "situacao": "Sobrepeso",
+      "id": "7T0TmnROasY"
+    },
+    {
+      "nome": "JOAO",
+      "altura": 1.78,
+      "peso": 88,
+      "imc": 27.77427092538821,
+      "situacao": "Sobrepeso",
+      "id": "YC6sFKdbmAE"
+    },
+    {
+      "nome": "Rafael",
+      "altura": 1.79,
+      "peso": 67,
+      "imc": 20.91070815517618,
+      "situacao": "Saudável",
+      "id": "FckvQ4n8yz0"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
