@@ -30,6 +30,8 @@ async function calcular() {
   const retorno = await cadastrarNaApi(objetoImc);
 
   if (retorno) {
+    buscarImcs();
+
     linhaTabela.innerHTML += `<tr><td>${nome}</td>
       <td>${altura}</td>
       <td>${peso}</td>
@@ -103,6 +105,10 @@ async function buscarImcs() {
     let template = "";
 
     console.log(retornaDados);
+
+    retornaDados.sort((a, b) => {
+      return a.nome.localeCompare(b.nome);
+    });
 
     for (let i = 0; i < retornaDados.length; i++) {
       template += `<tr><td>${retornaDados[i].nome}</td>

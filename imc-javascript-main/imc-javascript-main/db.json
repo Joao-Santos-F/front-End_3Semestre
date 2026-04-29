@@ -1,1 +1,29 @@
-{}
+{
+  "imc": [
+    {
+      "nome": "JOAO",
+      "altura": 1.67,
+      "peso": 55,
+      "imc": 19.721036967980208,
+      "situacao": "Saudável",
+      "id": "PVC4YgLV4SY"
+    },
+    {
+      "nome": "JOAO",
+      "altura": 1.67,
+      "peso": 55,
+      "imc": 19.721036967980208,
+      "situacao": "Saudável",
+      "id": "0W90zWlNMmY"
+    },
+    {
+      "nome": "Isadora",
+      "altura": 1.88,
+      "peso": 66,
+      "imc": 18.673607967406067,
+      "situacao": "Saudável",
+      "id": "EYynb_vs9s4"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
