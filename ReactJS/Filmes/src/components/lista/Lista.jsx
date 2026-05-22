@@ -30,9 +30,7 @@ const Lista = (props) => {
                             {props.lista && props.lista.length > 0 ? (
                                 // Se houver itens, faz um map (laço) para renderizar cada item da lista
                                 props.lista.map((item) => (
-                                    <tr className="item_lista" key={item.idGenero}>
-                                        {/* {console.log(index)} */}
-                                        {/* {console.log(item.idGenero)} */}
+                                    <tr className="item_lista" key={item.id}>
                                         <td data-cell="Nome">
                                             {/* Primeira célula da linha: mostra o nome (se for gênero) ou título (se for filme) */}
                                             {/* titulo == filme */}
