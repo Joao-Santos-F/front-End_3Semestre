@@ -2,10 +2,10 @@
 import axios from "axios";
 
 // Define a porta onde a API local está rodando
-const apiPort = "7192";
+const apiPort = "7192"; //se estiver dando erro e tiver que utilizar o db.json, altera a apiPort para 3000
 
 // Monta a URL base para a API local, usando a porta definida
-const localApi = `https://localhost:${apiPort}/api`;
+const localApi = `https://localhost:${apiPort}/api`; //tirar o /api se estiver dando erro na api para utilizar o json server
 
 // Define uma variável para uma API externa, mas no momento ela está como 'null' (não sendo usada)
 const externalApi = null;

@@ -2,6 +2,8 @@ import "./CadastroGenero.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Cadastro from "../../components/cadastro/Cadastro";
+import Swal from "sweetalert2";
+import Alerta from "../../components/alerta/Alert";
 import Lista from "../../components/lista/Lista";
 import { useEffect, useState } from "react";
 import api from "../../services/Services";
@@ -9,11 +11,21 @@ import api from "../../services/Services";
 const CadastroGenero = () => {
   //variáveis e states
   const [valor, setValor] = useState("");
+  const [editar, setEditar] = useState(false);
+  const [Id, setId] = useState();
   const [listaGeneros, setListaGenero] = useState([]);
 
   // funcao para limpar os formulários
   const limparForm = () => {
     setValor("");
+    setId();
+    setEditar(false);
+  };
+
+  //funcao para cancelar a edicao
+  const cancelarEdicao = () => {
+    limparForm();
+    setEditar(false);
   };
 
   // funcoes e ciclos de vida
@@ -46,7 +58,13 @@ const CadastroGenero = () => {
 
     //validar o formulario
     if (valor.trim().length == 0) {
-      alert("Preencha os campos corretamente");
+      // alert("Preencha os campos corretamente");
+      Alerta({
+        icon: "error",
+        title: "Oops...",
+        text: "Algo deu errado, preencha os campos corretamente !",
+        confirmButtonText: "Ok",
+      });
       return false;
     }
 
@@ -57,50 +75,120 @@ const CadastroGenero = () => {
 
     try {
       const retornoAPI = await api.post("/Genero", objCadastro); // cadastra na API
-      alert("Cadastrado com sucesso"); // mostra ao usuário se deu certo
+      Alerta({
+        icon: "success",
+        title: "Tudo certo !",
+        text: "Gênero cadastrado com sucesso !",
+        confirmButtonText: "Ok",
+      });
       getGeneros(); //atualiza a listagem na tela
       limparForm();
     } catch (error) {
-      alert("Ocorreu um erro ao cadastrar o genero na API");
+      Alerta({
+        icon: "error",
+        title: "Oops...",
+        text: "Ocorreu um erro ao cadastrar o gênero na API",
+        confirmButtonText: "Ok",
+      });
       console.log(error);
     }
   };
 
-const excluirGenero = async (item) => {
+  const excluirGenero = async (item) => {
+    // if (!confirm()) {
+    //   return false;
+    // }
+
+    const result = await Swal.fire({
+      title: "Você tem certeza?",
+      text: "Quer apagar o gênero " + item.nome + "?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Apagar",
+      cancelButtonText: "Cancelar",
+    });
+
+    if (!result.isConfirmed) {
+      return false;
+    }
+
     try {
-      if (!confirm("Quer apagar este gênero mesmo?")) {
-        return false
+      const retornoAPI = await api.delete(`/Genero/${item.idGenero}`);
+      if (retornoAPI.status == 200 || retornoAPI.status == 204) {
+        Alerta({
+          icon: "success",
+          title: "Tudo certo !",
+          text: "Gênero excluído com sucesso !",
+          confirmButtonText: "Ok",
+        });
+        getGeneros();
+      } else {
+        Alerta({
+          icon: "error",
+          title: "Oops...",
+          text: "Ocorreu um erro ao excluir o gênero.",
+          confirmButtonText: "Ok",
+        });
       }
-      const retornoAPI = await api.delete(`/Genero/${item.idGenero}`)
-      alert("Gênero excluído com sucesso!")
-      getGeneros()
     } catch (error) {
-      alert("Ocorreu um erro ao excluir o gênero.")
-      console.log(error)
+      Alerta({
+        icon: "error",
+        title: "Oops...",
+        text: "Ocorreu um erro ao excluir o gênero.",
+        confirmButtonText: "Ok",
+      });
+      console.log(error);
     }
   };
 
-  const editarGenero = async (item) => {
+  //edicao do editarGenero
+  const preEditar = (item) => {
+    //mostra os dados do formulário para o usuário preencher
+    setValor(item.nome);
+    //mostra o botao de editar para o usuário
+    setEditar(true);
+    // armazena o item que está sendo editado
+    setId(item.idGenero);
+  };
+
+  const editarGenero = async (e, item) => {
+    e.preventDefault();
 
     //validar o formulario
     if (valor.trim().length == 0) {
-      alert("Preencha os campos corretamente");
+      Alerta({
+        icon: "error",
+        title: "Oops...",
+        text: "Algo deu errado, preencha os campos corretamente !",
+        confirmButtonText: "Ok",
+      });
       return false;
     }
 
     const objEditado = {
-      idGenero: item.idGenero,
+      idGenero: Id,
       Nome: valor,
     };
 
     try {
-      const retornoAPI = await api.put(`/Genero/${item.idGenero}`, objEditado);
-      alert("Genero editado com sucesso");
+      const retornoAPI = await api.put(`/Genero/${Id}`, objEditado);
+      Alerta({
+        icon: "success",
+        title: "Tudo certo !",
+        text: "Gênero editado com sucesso !",
+        confirmButtonText: "Ok",
+      });
       getGeneros();
       limparForm();
     } catch (error) {
-      console.log(error);
-      alert("Ocorreu algum erro ao editar, tente novamente mais tarde");
+      Alerta({
+        icon: "error",
+        title: "Oops...",
+        text: "Ocorreu algum erro ao editar, tente novamente mais tarde",
+        confirmButtonText: "Ok",
+      });
     }
   };
 
@@ -120,11 +208,13 @@ const excluirGenero = async (item) => {
           // Propriedades voltada ao cadastro:
 
           //Função que será chamada ao enviar o formulário (onSubmit)
-          funcCadastro={cadastrarGenero}
+          funcCadastro={editar ? editarGenero : cadastrarGenero}
           // Valor atual do campo de texto
           valor={valor}
           // Função que atualiza o estado do valor no componente pai sempre que o usuário digita no campo
           setValor={setValor}
+          btnEditar={editar}
+          cancelarEdicao={cancelarEdicao}
         />
 
         <Lista
@@ -135,7 +225,7 @@ const excluirGenero = async (item) => {
           //Identifica o tipo de lista:
           tipoLista="genero"
           funcExcluir={excluirGenero}
-          funcEditar={editarGenero}
+          funcEditar={preEditar}
         />
       </main>
       <Footer />
