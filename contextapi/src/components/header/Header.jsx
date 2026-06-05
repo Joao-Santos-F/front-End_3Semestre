@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import UsuarioContext from "../../context/usuariocontext";
 import { useContext } from "react";
+import produtoContext from "../../context/produtoContext";
 
 const Header = () => {
 

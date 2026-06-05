@@ -2,36 +2,44 @@ import { useContext, useState } from "react";
 import produtoContext from "../../context/produtoContext";
 
 const Produtos = () => {
-  // state global
-  const { produto, setProduto } = useContext(produtoContext);
+  const { produtos, addProduto } = useContext(produtoContext);
 
-  // state local
-  const [novoProduto, setNovoProduto] = useState([]);
+  const [novoProduto, setNovoProduto] = useState("");
+
+  const Cadastrar = async () => {
+    const nome = novoProduto.trim()
+    if (!nome) return
+    try {
+      await addProduto(nome)
+      setNovoProduto("")
+    } catch (error) {
+      alert("Erro ao cadastrar produto. Veja console.")
+    }
+  }
 
   return (
     <div>
       <h2>Produtos</h2>
 
-      <p>
-            <input
-              type="text"
-              placeholder="Digite o nome do produto"
-              onChange={(e) => {
-                setNovoProduto(e.target.value);
-              }}
-            />
+      <div>
+        <input
+          type="text"
+          placeholder="Digite o nome do produto"
+          value={novoProduto}
+          onChange={(e) => setNovoProduto(e.target.value)}
+        />
 
-            <button
-              onClick={() => {
-                setProduto(novoProduto);
-              }}
-            >
-              Cadastrar produto
-            </button>
+        <button onClick={Cadastrar}>Cadastrar produto</button>
+      </div>
 
-            <h2>Produtos Cadastrados</h2>
-            <p>{produto}</p>
-      </p>
+      <h2>Produtos Cadastrados</h2>
+      <ul>
+        {produtos && produtos.length > 0 ? (
+          produtos.map((p, id) => <li key={id}>{p.nome}</li>)
+        ) : (
+          <li>Nenhum produto cadastrado</li>
+        )}
+      </ul>
     </div>
   );
 };

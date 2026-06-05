@@ -1,0 +1,17 @@
+{
+  "Produtos": [
+    {
+      "nome": "Coca-Cola",
+      "id": "GSeOEE0DEQo"
+    },
+    {
+      "nome": "Guarana",
+      "id": "EiAvizfnsEo"
+    },
+    {
+      "nome": "Pepsi",
+      "id": "Vq4Fs0a9nzk"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
