@@ -7,8 +7,8 @@ const ProdutoProvider = ({ children }) => {
 
     const getProdutos = async () => {
         try {
-            const res = await api.get("/Produtos")
-            setProdutos(res.data)
+            const retornoAPI = await api.get("/Produtos")   
+            setProdutos(retornoAPI.data)
         } catch (error) {
             console.error("Erro ao buscar produtos:", error)
         }
@@ -16,9 +16,9 @@ const ProdutoProvider = ({ children }) => {
 
     const addProduto = async (nome) => {
         try {
-            const res = await api.post("/Produtos", { nome })
-            setProdutos((prev) => [...prev, res.data])
-            return res.data
+            const retornoAPI = await api.post("/Produtos", { nome })
+            setProdutos((prev) => [...prev, retornoAPI.data])
+            return retornoAPI.data
         } catch (error) {
             console.error("Erro ao adicionar produto:", error)
             throw error
