@@ -24,7 +24,7 @@ const Perfil = () => {
                     //quero alterar o nome do usuário
                     setUsuario(novoUsuario)
                 }
-            }>Alterar Usuário</button> </p>
+            }>Entrar</button> </p>
         </div>
     )
 }
