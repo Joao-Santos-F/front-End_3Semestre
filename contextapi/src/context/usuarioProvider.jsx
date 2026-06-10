@@ -1,14 +1,15 @@
 import { useState } from "react"
-import UsuarioContext from "./usuariocontext"
+import { UsuarioContext } from "./usuarioContext"
 
-const usuarioProvider = ({children}) => {
-
-    const [usuario, setUsuario] = useState("")
-
+const UsuarioProvider = ( {children} ) => {
+    const [usuario, setUsuario] = useState(null)
+    // const [listaUsuarios, setListaUsuarios] = useState([])
+    
     return (
         <UsuarioContext.Provider
             value={{
-                usuario, setUsuario
+                usuario, 
+                setUsuario
             }}
         >
             {children}
@@ -16,4 +17,5 @@ const usuarioProvider = ({children}) => {
     )
 }
 
-export default usuarioProvider
+
+export default UsuarioProvider

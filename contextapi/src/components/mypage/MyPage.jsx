@@ -1,15 +1,14 @@
 import { useContext } from "react"
-import UsuarioContext from "../../context/usuariocontext"
+import { UsuarioContext } from "../../context/usuarioContext"
 
 const MyPage = () => {
-
-    //extrai o usuário para utilizar os seus dados
+    // extrai o usuário para utilizar os seus dados
     const {usuario} = useContext(UsuarioContext)
 
-    return(
+    return (
         <div>
-            <h2>Minha página Pessoal</h2>
-            <p>Dados do Usuário: {usuario}</p>
+            <h2>Meu Blog</h2>
+            <p>Dados do usuário: {usuario}</p>
         </div>
     )
 }

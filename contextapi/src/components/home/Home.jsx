@@ -1,17 +1,15 @@
-import { useContext } from "react"
-import UsuarioContext from "../../context/usuariocontext"
-
+import { useContext } from "react";
+import { UsuarioContext } from "../../context/usuarioContext";
 
 const Home = () => {
+  const { usuario } = useContext(UsuarioContext);
 
-    const {usuario} = useContext(UsuarioContext)
+  return (
+    <>
+      <h2>Página Home</h2>
+      <p>Usuário: {usuario}</p>
+    </>
+  );
+};
 
-    return(
-        <>
-            <h2>Página Home</h2>
-            <p>Usuário: {usuario}</p>
-        </>
-    )
-}
-
-export default Home
+export default Home;

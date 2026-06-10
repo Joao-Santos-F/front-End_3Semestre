@@ -20,7 +20,10 @@ function App() {
                 <MyPage />
               </PrivateRoute>} 
           />
-          <Route path="/produto" element={<Produtos />} />
+          <Route path="/produto" element={
+            <PrivateRoute>
+              <Produtos />
+            </PrivateRoute>} />
         </Routes>
       </BrowserRouter>
     </>

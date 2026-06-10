@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import UsuarioContext from "../context/usuariocontext";
+import { UsuarioContext } from "../context/usuarioContext";
 import { Navigate } from "react-router-dom";
 
 //componente para rotas privadas
