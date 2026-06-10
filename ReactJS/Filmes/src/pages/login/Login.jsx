@@ -1,5 +1,5 @@
 import "./Login.css";
-import { useContext, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Botao from "../../components/botao/Botao";
 import Logo from "../../assets/img/logo.svg";
@@ -7,7 +7,7 @@ import { UsuarioContext } from "../../context/UsuarioContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUsuario } = useContext(UsuarioContext);
+  const { usuario, setUsuario } = useContext(UsuarioContext);
   const [novoUsuario, setNovoUsuario] = useState("");
 
   const loginGmail = () => {
@@ -17,8 +17,13 @@ const Login = () => {
     localStorage.setItem("gmail", JSON.stringify(gmail));
     setUsuario(gmail);
     setNovoUsuario("");
-    navigate("/filmes");
   };
+
+  useEffect(() => {
+    if (usuario) {
+      navigate("/filmes");
+    }
+  }, [usuario, navigate]);
 
   const segurarSubmit = (e) => {
     e.preventDefault();
