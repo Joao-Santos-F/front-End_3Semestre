@@ -1,0 +1,10 @@
+import { Navigate } from "react-router-dom"
+import { UsuarioContext } from "../context/UsuarioContext"
+import { useContext } from "react"
+
+const PrivateRoute = ({ children }) => {
+    const { usuario } = useContext(UsuarioContext)
+    return usuario ? children : <Navigate to="/" replace />
+}
+
+export default PrivateRoute;

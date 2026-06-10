@@ -1,22 +1,28 @@
 import "./Botao.css"
 
 const Botao = (props) => {
-    return(
+  const handleClick = (event) => {
+    if (props.btnEditar) {
+      event.preventDefault();
+      props.cancelarEdicao();
+      return;
+    }
 
-        <button 
-            className="botao" 
-            type={props.btnEditar ? "button" : "submit"}
-            onClick = {()=>{
-                if(props.btnEditar) {
-                    props.cancelarEdicao()
-                    return false;
-                }
-            }}
-        >
-            {props.nomeDoBotao}
-        </button>
+    if (props.onClick) {
+      event.preventDefault();
+      props.onClick(event);
+    }
+  };
 
-    )
-}
+  return (
+    <button
+      className="botao"
+      type={props.btnEditar ? "button" : "submit"}
+      onClick={handleClick}
+    >
+      {props.nomeDoBotao}
+    </button>
+  );
+};
 
 export default Botao;

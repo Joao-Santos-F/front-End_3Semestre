@@ -1,10 +1,12 @@
 import './App.css'
 import Rotas from './Routes/Routes'
+import UsuarioProvider from './context/UsuarioProvider'
 
 function App() {
-
   return (
-    <Rotas />
+    <UsuarioProvider>
+      <Rotas />
+    </UsuarioProvider>
   )
 }
 

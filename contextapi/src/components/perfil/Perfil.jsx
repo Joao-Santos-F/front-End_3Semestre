@@ -18,10 +18,6 @@ const Perfil = () => {
         setNovoUsuario("")
     }
 
-
-    
-
-
     return (
         <>
             <h2>Minha pagina de perfil</h2>

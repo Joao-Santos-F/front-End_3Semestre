@@ -8,14 +8,14 @@ const UsuarioProvider = ({ children }) => {
 
     useEffect(() => {
         const usuarioStorage = JSON.parse(localStorage.getItem("usuario") || "null")
-        setUsuario(usuarioStorage === "" ? null : usuarioStorage)
+        setUsuario(usuarioStorage === "" ? null : usuarioStorage)   
     },[])
 
 
     return (
         <UsuarioContext.Provider
             value={{
-                usuario,
+                usuario,    
                 setUsuario
             }}
         >
