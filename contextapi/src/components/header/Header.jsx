@@ -10,13 +10,14 @@ const Header = () => {
         <header>
             <nav>
                 <Link to={"/"}>Home</Link> {" | "}
-                <Link to="/Perfil">Perfil</Link>{" | "}
-                <Link to="/MyPage">My Blog</Link>{" | "}
-                <Link to="/Produto">Cadastrar Produto</Link>{" | "}
+                <Link to="/perfil">Perfil</Link>{" | "}
+                <Link to="/myPage">My Blog</Link>{" | "}
+                <Link to="/cdProduto">Cadastrar Produto</Link>{" | "}
                 <span>( {usuario} )</span>
                 <button 
                     onClick={()=>{
                         setUsuario(null)
+                        localStorage.removeItem("usuario")
                     }}
                 >Sair</button>
             </nav>

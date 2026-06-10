@@ -7,10 +7,10 @@ import ProdutoProvider from './context/produtoProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <UsuarioProvider>
     <ProdutoProvider>
+    <UsuarioProvider>
     <App />
-    </ProdutoProvider>
     </UsuarioProvider>
+    </ProdutoProvider>
   </StrictMode>,
 )

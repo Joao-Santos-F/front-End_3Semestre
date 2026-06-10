@@ -35,7 +35,7 @@ const Produtos = () => {
       <h2>Produtos Cadastrados</h2>
       <ul>
         {produtos && produtos.length > 0 ? (
-          produtos.map((p, id) => <li key={id}>{p.nome}</li>)
+          produtos.map((p) => <li key={p.id || p.nome}>{p.nome}</li>)
         ) : (
           <li>Nenhum produto cadastrado</li>
         )}

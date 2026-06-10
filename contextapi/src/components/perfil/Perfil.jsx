@@ -1,38 +1,47 @@
-import { useContext, useState } from "react";
-import { UsuarioContext } from "../../context/usuarioContext";
+import { useContext, useEffect, useState } from "react"
+import { UsuarioContext } from "../../context/usuarioContext"
 
 const Perfil = () => {
-  //   state global (UsuarioContext)
-  const { usuario, setUsuario } = useContext(UsuarioContext);
-  // state local
-  const [novoUsuario, setNovoUsuario] = useState("");
-  
-  return (
-    <>
-      <h2>Página de perfil do usuário</h2>
-      <span>Usuário: {usuario}</span>
-      <p>
-        <input 
-            type="text" 
-            placeholder="Novo usuário" 
-            value={novoUsuario}
-            onChange={(e) => {
-                setNovoUsuario(e.target.value)
-            }}
-        />
-        <button
-          onClick={() => {
-            // quero alterar o usuário
-            setUsuario(novoUsuario);
-            setNovoUsuario("")
-            // setListaUsuarios( [ ...listaUsuarios, novoUsuario ] );
-          }}
-        >
-          Entrar
-        </button>
-      </p>
-    </>
-  );
-};
 
-export default Perfil;
+    //state Global
+    const { usuario, setUsuario } = useContext(UsuarioContext)
+
+    //State local
+    const [novoUsuario, setNovoUsuario] = useState("")
+
+    const login = () => {
+        const nome = novoUsuario.trim()
+        if (!nome) return
+
+        setUsuario(nome)
+        localStorage.setItem("usuario", JSON.stringify(nome))
+        setNovoUsuario("")
+    }
+
+
+    
+
+
+    return (
+        <>
+            <h2>Minha pagina de perfil</h2>
+            <span>Usuario: {usuario}</span>
+            <p>
+                <input
+                    type="text"
+                    placeholder="Novo usuario"
+                    value={novoUsuario}
+                    onChange={(e) => {
+                        setNovoUsuario(e.target.value)
+                    }} />
+
+                <button onClick={() => {
+                   login()
+                }}
+                >Entrar</button>
+            </p>
+        </>
+    )
+}
+
+export default Perfil
