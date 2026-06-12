@@ -4,30 +4,77 @@ import { useNavigate } from "react-router-dom";
 import Botao from "../../components/botao/Botao";
 import Logo from "../../assets/img/logo.svg";
 import { UsuarioContext } from "../../context/UsuarioContext";
+import Alerta from "../../components/alerta/Alert";
+import { jwtDecode } from "jwt-decode";
+import api, { localAPIImagePath } from "../../services/Services";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { usuario, setUsuario } = useContext(UsuarioContext);
+  const { setUsuario } = useContext(UsuarioContext);
   const [novoUsuario, setNovoUsuario] = useState("");
-
-  const loginGmail = () => {
-    const gmail = novoUsuario.trim();
-    if (!gmail) return;
-
-    localStorage.setItem("gmail", JSON.stringify(gmail));
-    setUsuario(gmail);
-    setNovoUsuario("");
-  };
+  const [senha, setSenha] = useState("");
 
   useEffect(() => {
-    if (usuario) {
-      navigate("/filmes");
+    const logado = JSON.parse(localStorage.getItem("usuario"));
+    if (logado) {
+      setUsuario(logado);
+      navigate("/generos");
     }
-  }, [usuario, navigate]);
+  }, []);
+
+  const loginUser = async () => {
+    const gmail = novoUsuario.trim();
+    const senhaDigitada = senha.trim();
+
+    if (senhaDigitada.length === 0 || gmail.length === 0) {
+      Alerta({
+        title: "Campo obrigatório",
+        text: "Por favor, insira seu e-mail e senha antes de continuar.",
+        icon: "warning",
+        confirmButtonColor: "#CC3F55",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
+
+    const dadosLogin = {
+      email: gmail,
+      senha: senhaDigitada,
+    };
+
+    try {
+      const retornoAPI = await api.post("/Login", dadosLogin);
+
+      if (retornoAPI.status === 200) {
+        const token = retornoAPI.data.token;
+        const usuarioDecoded = jwtDecode(token);
+
+        Alerta({
+          title: "Login bem-sucedido",
+          text: "Bem-vindo de volta!",
+          icon: "success",
+          confirmButtonColor: "#CC3F55",
+        });
+
+        setUsuario(usuarioDecoded);
+        localStorage.setItem("usuario", JSON.stringify(usuarioDecoded));
+        setNovoUsuario("");
+        setSenha("");
+        navigate("/generos");
+      }
+    } catch (e) {
+      Alerta({
+        title: "Erro no login",
+        text: "E-mail ou senha incorretos.",
+        icon: "error",
+        confirmButtonColor: "#CC3F55",
+      });
+    }
+  };
 
   const segurarSubmit = (e) => {
     e.preventDefault();
-    loginGmail();
+    loginUser();
   };
 
   return (
@@ -54,6 +101,8 @@ const Login = () => {
                 type="password"
                 name="senha"
                 placeholder="Digite sua senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
               />
             </div>
           </div>

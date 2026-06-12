@@ -20,6 +20,8 @@ const CadastroFilme = () => {
 
   const [listaFilmes, setListaFilmes] = useState([]);
 
+  const [imagem, setImagem] = useState(null);
+
   const [listaGeneros, setListaGenero] = useState([]);
 
   //funcoes
@@ -77,6 +79,7 @@ const CadastroFilme = () => {
     const formData = new FormData();
     formData.append("titulo", valor);
     formData.append("idGenero", idGenero);
+    formData.append("imagem", imagem);
 
     try {
       await api.post("/Filme", formData, {
@@ -109,6 +112,7 @@ const CadastroFilme = () => {
     setEditar(true);
     setIdFilme(filme.idFilme);
     setValor(filme.titulo);
+    setImagem(item.imagem)
 
     const idGen =
       filme.idGenero ??
@@ -134,6 +138,7 @@ const CadastroFilme = () => {
     formData.append("idFilme", idFilme);
     formData.append("titulo", valor);
     formData.append("idGenero", idGenero);
+    formData.append("imagem", imagem);
 
     try {
       await api.put(`/Filme/${idFilme}`, formData, {
@@ -198,6 +203,7 @@ const CadastroFilme = () => {
     setIdGenero("");
     setEditar(false);
     setIdFilme("");
+    setImagem(null);
   };
 
   return (
@@ -222,6 +228,7 @@ const CadastroFilme = () => {
           setValor={setValor}
           valorGenero={idGenero}
           setValorGenero={setIdGenero}
+          setImagem={setImagem}
           btnEditar={editar}
           cancelarEdicao={limparForm}
           listaGeneros={listaGeneros}

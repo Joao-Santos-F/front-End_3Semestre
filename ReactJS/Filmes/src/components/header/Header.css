@@ -32,6 +32,38 @@ header{
     text-decoration: none;
 }
 
+.botao_header {
+    margin-left: 45px;
+
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+
+    border: 1.5px solid white;
+    border-radius: 6px;
+    padding: 6px 16px;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.botao_header:hover {
+    background-color: white;
+    color: #CC3F55;
+}
+
+.botao_header:active {
+    transform: scale(0.97);
+}
+
+@media screen and (max-width: 768px){
+    .botao_header {
+        margin-left: 10px;
+        padding: 4px 10px;
+        font-size: 0.85rem;
+    }
+}
+
 @media screen and (max-width: 768px){
     .cabecalho img{
         height: 35px;
